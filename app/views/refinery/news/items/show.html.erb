@@ -1,0 +1,69 @@
+
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    
+
+</head>
+
+<body>
+
+    <div class="container">
+   
+
+    <% content_for :body_content_title, @item.title %>
+    <% content_for :body do %>
+      <article class="news_item">
+        <p>
+          <small><%= t('.published') %> <%= l(@item.publish_date, :format => :long) %></small>
+        </p>
+        <% if @item.source.present? %>
+          <p>
+            <small><%= t('.source') %> <%= @item.source %></small>
+          </p>
+        <% end %>
+        <%= @item.body.html_safe %>
+        <p>
+          <%= link_to t('.back_to_index'), refinery.news_items_path %>
+        </p>
+      </article>
+    <% end %>
+    <% content_for :side_body, render(:partial => 'recent_posts') %>
+
+    <%= render "/refinery/content_page" %>
+
+
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+<div id="disqus_thread"></div>
+<script>
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//proyectoisw.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+</html>

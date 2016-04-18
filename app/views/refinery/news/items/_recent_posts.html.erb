@@ -1,0 +1,45 @@
+
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+        <div class="container">
+        <nav id="recent_news_items">
+  <h2><%= t('.recent_posts') %></h2>
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <%= link_to item.title, refinery.news_item_path(item) %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
+
+
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+
+
+</html>
